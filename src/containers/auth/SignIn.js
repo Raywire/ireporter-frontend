@@ -21,7 +21,6 @@ class SignIn extends Component {
 
   render() {
     const { authMessage } = this.props;
-    console.log(this.props)
 
     if (authMessage && authMessage.message === 'password or username is invalid') {
       document.getElementById('username').classList.add('is-invalid');
