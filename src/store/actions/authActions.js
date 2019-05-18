@@ -15,3 +15,15 @@ export const signInUser = (credentials) => {
       });
   };
 };
+
+export const signUpUser = (credentials) => {
+  return (dispatch) => {
+    return axios.post(`${configUrls.root}signup`, credentials)
+      .then((response) => {
+        dispatch({ type: 'SIGNUP_SUCCESS', response });
+      })
+      .catch((error) => {
+        dispatch({ type: 'SIGNUP_ERROR', error: error.response.data });
+      });
+  };
+};
