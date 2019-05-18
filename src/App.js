@@ -2,6 +2,7 @@ import React from 'react';
 import './themes/custom.scss';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import SignIn from './containers/auth/SignIn';
+import Home from './containers/dashboard/Home';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <div className="App">
         <Switch>
           <Route path='/signin' component={SignIn} />
+          <Route path='/home' component={Home} />
         </Switch>
       </div>    
     </BrowserRouter>
