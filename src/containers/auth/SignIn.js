@@ -28,7 +28,6 @@ class SignIn extends Component {
       document.getElementById('message').innerText = authMessage.message;
     }
     if (authMessage && authMessage.data) {
-      console.log('hapa')
       document.getElementById('username').classList.add('is-valid');
       document.getElementById('password').classList.add('is-valid');
       localStorage.setItem('auth', JSON.stringify(authMessage.data[0]));
