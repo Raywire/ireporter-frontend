@@ -11,6 +11,7 @@ export class EditIncident extends Component {
     this.state = {
       title: '',
       comment: '',
+      location: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,15 +25,14 @@ export class EditIncident extends Component {
   componentWillReceiveProps(nextProps) {
     console.log(nextProps, this.props)
     try {
-      const articles = [];
-      articles.push(nextProps.article);
-      const article = articles[0];
+      const incidents = [];
+      incidents.push(nextProps.incident);
+      const incident = incidents[0];
 
       this.setState({
-        title: article.title,
-        description: article.description,
-        comment,
-        is_published: true,
+        title: incident.title,
+        comment: incident.comment,
+        location: incident.location,
       });
     } catch (e) {}
   }
@@ -45,44 +45,49 @@ export class EditIncident extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    document.getElementById('title').classList.remove('is-invalid');
-    document.getElementById('description').classList.remove('is-invalid');
 
     const id = this.props.match.params.id;
-    const updatedArticle = {
+    const updatedIncident = {
       title: this.state.title,
-      description: this.state.description,
+      location: this.state.location,
       comment: this.state.comment,
     };
-    this.props.updateIncidentComment(id, updatedArticle);
+    this.props.updateIncidentComment(id, 'redflags', updatedIncident.comment);
   }
 
   render() {
     // Prevent a user who is not logged in from accessing this page
-    const author = {
-      username: 'rayray'
-    }
+
+    const incident = this.state;
+    const incidentData = this.props.incident;
+    console.log(this.state, this.props);
 
     return (
       <div className="container">
         {
-          author && author.username && isOwner(author.username) ? (
+          incidentData && incidentData.username && isOwner(incidentData.username) ? (
             <div>
               <form onSubmit={this.handleSubmit} className="white">
-                <h5 className="text-center mt-3">Edit Incident</h5>
+                <h3 className="text-center">Update Incident</h3>
                 <div className="form-group">
                   <label htmlFor="title">Title</label>
-                  <input type="text" id="title" autoComplete="off" className="form-control" onChange={this.handleChange} value='' />
+                  <input type="text" id="title" autoComplete="off" className="form-control" onChange={this.handleChange} value={incident.title} />
                   <div className="invalid-feedback" id="title-text" />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="description">Comment</label>
-                  <input type="text" maxLength="128" id="description" autoComplete="off" onChange={this.handleChange} className="form-control" value="" />
-                  <div className="invalid-feedback" id="description-text" />
+                  <label htmlFor="comment">Comment</label>
+                  <textarea className="form-control" id="comment" rows="3" onChange={this.handleChange} value={incident.comment}></textarea>
+                  <div className="invalid-feedback" id="comment-text" />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="location">Location</label>
+                  <input type="text" id="location" autoComplete="off" onChange={this.handleChange} className="form-control" value={incident.location}/>
+                  <div className="invalid-feedback" id="location-text" />
                 </div>
                 <div className="form-group text-center">
                   <button type="submit" className="btn btn-primary mt-3">Update Incident</button>
                 </div>
+                <div className="alert" role="alert" id="success-text" />
               </form>
             </div>
           ) : (
@@ -96,13 +101,13 @@ export class EditIncident extends Component {
 }
 
 const mapStateToProps = state => ({
-
+  incident: state.incidents.incident,
+  incidentMessage: state.incidents.incidentMessage,
 });
 
 const mapDispatchToProps = dispatch => ({
-  updateIncidentComment: (id, article) => dispatch(updateIncidentComment(id, article)),
+  updateIncidentComment: (id, type, article) => dispatch(updateIncidentComment(id, type, article)),
   getIncident: id => dispatch(getIncident(id)),
-  deleteIncident: id => dispatch(deleteIncident(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditIncident);

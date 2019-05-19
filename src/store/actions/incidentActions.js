@@ -34,15 +34,16 @@ export const getIncident = (id) => {
   };
 };
 
-export const updateIncidentComment = (id) => {
+export const updateIncidentComment = (id, type, comment) => {
   return (dispatch) => {
-    return axios.patch(`${configUrls.root}redflags/${id}`, config)
+    return axios.patch(`${configUrls.root}${type}/${id}/comment`, {comment}, config)
       .then((response) => {
-        dispatch({ type: 'UPDATE_REDFLAG_SUCCESS', response });
+        console.log(response)
+        dispatch({ type: 'UPDATE_COMMENT_SUCCESS', response });
       })
       .catch((error) => {
           console.log(error.response)
-        dispatch({ type: 'UPDATE_REDFLAG_ERROR', error: error.response.data });
+        dispatch({ type: 'UPDATE_COMMENT_ERROR', error: error.response.data });
       });
   };
 };

@@ -53,7 +53,17 @@ const initState = {
         return {
           ...state,
           errorMessage: action.error,
-        };         
+        };
+      case 'UPDATE_COMMENT_SUCCESS':
+        return {
+          ...state,
+          incidentMessage: action.response.data.data[0],
+        };
+      case 'UPDATE_COMMENT_ERROR':
+        return {
+          ...state,
+          errorMessage: action.error,
+        };        
       default:
         return state;
     }
