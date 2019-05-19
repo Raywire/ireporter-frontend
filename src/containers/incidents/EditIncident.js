@@ -23,7 +23,6 @@ export class EditIncident extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps, this.props)
     try {
       const incidents = [];
       incidents.push(nextProps.incident);
@@ -60,7 +59,6 @@ export class EditIncident extends Component {
 
     const incident = this.state;
     const incidentData = this.props.incident;
-    console.log(this.state, this.props);
 
     return (
       <div className="container">
