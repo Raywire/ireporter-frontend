@@ -22,7 +22,7 @@ export const getRedflags = () => {
   };
 };
 
-export const getRedflag = (id) => {
+export const getIncident = (id) => {
   return (dispatch) => {
     return axios.get(`${configUrls.root}redflags/${id}`, config)
       .then((response) => {
@@ -31,6 +31,43 @@ export const getRedflag = (id) => {
       .catch((error) => {
           console.log(error.response)
         dispatch({ type: 'GET_REDFLAG_ERROR', error: error.response.data });
+      });
+  };
+};
+
+export const updateIncidentComment = (id) => {
+  return (dispatch) => {
+    return axios.patch(`${configUrls.root}redflags/${id}`, config)
+      .then((response) => {
+        dispatch({ type: 'UPDATE_REDFLAG_SUCCESS', response });
+      })
+      .catch((error) => {
+          console.log(error.response)
+        dispatch({ type: 'UPDATE_REDFLAG_ERROR', error: error.response.data });
+      });
+  };
+};
+
+export const deleteIncident = (id) => {
+  return (dispatch) => {
+    return axios.delete(`${configUrls.root}redflags/${id}`, config)
+      .then((response) => {
+        dispatch({ type: 'UPDATE_REDFLAG_SUCCESS', response });
+      })
+      .catch((error) => {
+        dispatch({ type: 'UPDATE_REDFLAG_ERROR', error: error.response.data });
+      });
+  };
+};
+
+export const createIncident = (incident) => {
+  return (dispatch) => {
+    return axios.post(`${configUrls.root}redflags/`, incident, config)
+      .then((response) => {
+        dispatch({ type: 'CREATE_REDFLAG_SUCCESS', response });
+      })
+      .catch((error) => {
+        dispatch({ type: 'CREATE_REDFLAG_ERROR', error: error.response.data });
       });
   };
 };

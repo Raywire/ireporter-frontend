@@ -1,10 +1,12 @@
 import React from 'react';
 import Incidents from './Incidents';
+import CreateIncident from './CreateIncident';
 
 const RedflagList = () => {
   return (
     <div className="container">
-       <Incidents type='redflags' />
+      <CreateIncident />
+      <Incidents type='redflags' />
     </div>
   );
 };

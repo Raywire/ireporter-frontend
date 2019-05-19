@@ -17,7 +17,11 @@ export class Incidents extends Component {
 
   render() {
     if (authStatus() === false) {
-      this.props.history.push('/');
+      window.location.replace('/signin');
+    }
+    const { errorMessage } = this.props;
+    if (errorMessage && errorMessage.message === 'Token is invalid'){
+      window.location.replace('/signin');
     }
     const { incidents } = this.props;
     if (incidents && incidents.length === 0) {
@@ -66,6 +70,7 @@ export class Incidents extends Component {
 const mapStateToProps = (state) => {
   return {
     incidents: state.incidents.incidents,
+    errorMessage: state.incidents.errorMessage,
   };
 };
 

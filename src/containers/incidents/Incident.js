@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import { getRedflag } from '../../store/actions/incidentActions';
+import { getIncident } from '../../store/actions/incidentActions';
 import authStatus from '../../helpers/authStatus';
+import isOwner from '../../helpers/isOwner';
+import Edit from '../../components/Edit';
 
 
 class IncidentDetails extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
-    this.props.getRedflag(id);
+    this.props.getIncident(id);
   }
 
   render() {
@@ -18,6 +20,7 @@ class IncidentDetails extends Component {
       return (
         <div className="container incident-details">
           <div className="row float-right mt-4">
+          {isOwner(incident.username) ? <Edit id={incident.id} /> : null}
           </div>
           <div className="row">
             <div className="col-lg-4 mt-4">
@@ -78,7 +81,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getRedflag: id => dispatch(getRedflag(id)),
+  getIncident: id => dispatch(getIncident(id)),
 });
 
 export default connect(
