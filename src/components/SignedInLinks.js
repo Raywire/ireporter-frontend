@@ -15,12 +15,12 @@ class SignedInLinks extends Component {
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link" to="/create">
+          <NavLink className="nav-link" to="/redflags">
             Red Flags
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link" to="/create">
+          <NavLink className="nav-link" to="/interventions">
             Interventions
           </NavLink>
         </li>
@@ -28,7 +28,7 @@ class SignedInLinks extends Component {
           <NavLink className="nav-link" to="/profile">Profile</NavLink>
         </li>
         <li className="nav-item">
-          <button id="logout" class="btn btn-link"><i class="fa fa-power-off" aria-hidden="true"></i></button>
+          <button id="logout" className="btn btn-link"><i className="fa fa-power-off" aria-hidden="true"></i></button>
         </li>
       </ul>
     );
