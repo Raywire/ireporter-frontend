@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import { Link } from 'react-router-dom';
 import { getRedflag } from '../../store/actions/incidentActions';
 import authStatus from '../../helpers/authStatus';
 
@@ -24,12 +23,11 @@ class IncidentDetails extends Component {
             <div className="col-lg-4 mt-4">
               <div className="row">
                 <div className="col-lg-3">
-                  <Link
-                    to={`/profile/${incident.username}`}
+                  <span
                     className="btn btn-info profile-img d-flex align-items-center justify-content-center"
                   >
                     {incident.username.slice(0, 2)}
-                  </Link>
+                  </span>
                 </div>
                 <div className="col-lg-9">
                   <div className="text-muted">

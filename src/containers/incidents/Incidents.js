@@ -10,7 +10,6 @@ const smartTruncate = require('smart-truncate');
 export class Incidents extends Component {
   componentDidMount() {
     const { type } = this.props;
-    console.log(type)
     if (type === 'redflags'){
       this.props.getRedflags();
     }

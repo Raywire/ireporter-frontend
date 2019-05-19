@@ -13,7 +13,6 @@ export const getRedflags = () => {
   return (dispatch) => {
     return axios.get(`${configUrls.root}redflags`, config)
       .then((response) => {
-          console.log(response)
         dispatch({ type: 'GET_REDFLAGS_SUCCESS', response });
       })
       .catch((error) => {
@@ -27,7 +26,6 @@ export const getRedflag = (id) => {
   return (dispatch) => {
     return axios.get(`${configUrls.root}redflags/${id}`, config)
       .then((response) => {
-          console.log(response)
         dispatch({ type: 'GET_REDFLAG_SUCCESS', response });
       })
       .catch((error) => {
