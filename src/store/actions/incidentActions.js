@@ -23,3 +23,16 @@ export const getRedflags = () => {
   };
 };
 
+export const getRedflag = (id) => {
+  return (dispatch) => {
+    return axios.get(`${configUrls.root}redflags/${id}`, config)
+      .then((response) => {
+          console.log(response)
+        dispatch({ type: 'GET_REDFLAG_SUCCESS', response });
+      })
+      .catch((error) => {
+          console.log(error.response)
+        dispatch({ type: 'GET_REDFLAG_ERROR', error: error.response.data });
+      });
+  };
+};
