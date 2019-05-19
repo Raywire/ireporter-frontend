@@ -21,6 +21,7 @@ class SignIn extends Component {
 
   render() {
     const { authMessage } = this.props;
+    console.log(authMessage)
 
     if (authMessage && authMessage.message === 'password or username is invalid') {
       document.getElementById('username').classList.add('is-invalid');
@@ -28,8 +29,8 @@ class SignIn extends Component {
       document.getElementById('message').innerText = authMessage.message;
     }
     if (authMessage && authMessage.data) {
-      document.getElementById('username').classList.add('is-valid');
-      document.getElementById('password').classList.add('is-valid');
+      // document.getElementById('username').classList.add('is-valid');
+      // document.getElementById('password').classList.add('is-valid');
       localStorage.setItem('auth', JSON.stringify(authMessage.data[0]));
       this.props.history.replace('/home');
     }

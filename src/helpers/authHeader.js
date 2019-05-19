@@ -1,10 +1,10 @@
 import authUser from './authUser';
 
 const authHeader = () => {
-  const user = authUser();
+  const auth = authUser();
 
-  if (user && user.token) {
-    return { Authorization: `Bearer ${user.token}` };
+  if (auth && auth.token) {
+    return { Authorization: `Bearer ${auth.token}` };
   }
   return {};
 };
