@@ -5,22 +5,32 @@ import { getIncident } from '../../store/actions/incidentActions';
 import authStatus from '../../helpers/authStatus';
 import isOwner from '../../helpers/isOwner';
 import Edit from '../../components/Edit';
+import Delete from '../../components/Delete';
 
 
 class IncidentDetails extends Component {
+  state = {
+    redirect: false
+  }
   componentDidMount() {
     const { id } = this.props.match.params;
     this.props.getIncident(id);
   }
-
+  static getDerivedStateFromProps(nextProps, prevState){
+    const { incidentMessage } = nextProps;
+    if (incidentMessage && incidentMessage.message) {
+      nextProps.history.replace('/redflags');
+    }
+    return null;
+  }
   render() {
     const { incident } = this.props;
-    console.log(this.props)
     if (incident && incident.comment) {
       return (
         <div className="container incident-details">
           <div className="row float-right mt-4">
           {isOwner(incident.username) ? <Edit id={incident.id} /> : null}
+          {isOwner(incident.username) ? <Delete id={incident.id} /> : null}
           </div>
           <div className="row">
             <div className="col-lg-4 mt-4">
@@ -78,6 +88,7 @@ class IncidentDetails extends Component {
 
 const mapStateToProps = state => ({
   incident: state.incidents.incident,
+  incidentMessage: state.incidents.incidentMessage,
 });
 
 const mapDispatchToProps = dispatch => ({

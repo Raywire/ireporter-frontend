@@ -21,7 +21,7 @@ export class Incidents extends Component {
     }
     const { errorMessage } = this.props;
     if (errorMessage && errorMessage.message === 'Token is invalid'){
-      window.location.replace('/signin');
+      // window.location.replace('/signin');
     }
     const { incidents } = this.props;
     if (incidents && incidents.length === 0) {

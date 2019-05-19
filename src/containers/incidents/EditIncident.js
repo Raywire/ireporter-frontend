@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import authStatus from '../../helpers/authStatus';
 import isOwner from '../../helpers/isOwner';
-import { updateIncidentComment, getIncident, deleteIncident } from '../../store/actions/incidentActions';
+import { updateIncidentComment, getIncident } from '../../store/actions/incidentActions';
 
 export class EditIncident extends Component {
   constructor(props) {
@@ -22,6 +22,7 @@ export class EditIncident extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log(nextProps, this.props)
     try {
       const articles = [];
       articles.push(nextProps.article);
@@ -34,11 +35,6 @@ export class EditIncident extends Component {
         is_published: true,
       });
     } catch (e) {}
-  }
-
-
-  handleClick = () => {
-    this.props.deleteIncident(this.props.match.params.id);
   }
 
   handleChange(e) {
@@ -72,32 +68,6 @@ export class EditIncident extends Component {
         {
           author && author.username && isOwner(author.username) ? (
             <div>
-              <div className="row float-right mt-1">
-                <div>
-                  <button type="button" className="btn btn-outline-danger" data-toggle="modal" data-target="#deleteModal">
-                    <i className="fas fa-trash" />
-                    <span className="ml-1">Delete</span>
-                  </button>
-                  <div className="modal fade" id="deleteModal" tabIndex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                    <div className="modal-dialog" role="document">
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <h5 className="modal-title" id="deleteModalLabel">Delete Article</h5>
-                          <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div className="modal-body">
-                          Are you sure you want to delete this incident?
-                        </div>
-                        <div className="modal-footer">
-                          <button type="button" className="btn btn-danger" onClick={this.handleClick} data-dismiss="modal">Delete</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
               <form onSubmit={this.handleSubmit} className="white">
                 <h5 className="text-center mt-3">Edit Incident</h5>
                 <div className="form-group">

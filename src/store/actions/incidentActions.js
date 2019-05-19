@@ -29,7 +29,6 @@ export const getIncident = (id) => {
         dispatch({ type: 'GET_REDFLAG_SUCCESS', response });
       })
       .catch((error) => {
-          console.log(error.response)
         dispatch({ type: 'GET_REDFLAG_ERROR', error: error.response.data });
       });
   };
@@ -52,10 +51,12 @@ export const deleteIncident = (id) => {
   return (dispatch) => {
     return axios.delete(`${configUrls.root}redflags/${id}`, config)
       .then((response) => {
-        dispatch({ type: 'UPDATE_REDFLAG_SUCCESS', response });
+        console.log(response)
+        dispatch({ type: 'DELETE_REDFLAG_SUCCESS', response });
       })
       .catch((error) => {
-        dispatch({ type: 'UPDATE_REDFLAG_ERROR', error: error.response.data });
+        console.log(error.response)
+        dispatch({ type: 'DELETE_REDFLAG_ERROR', error: error.response.data });
       });
   };
 };
@@ -64,6 +65,7 @@ export const createIncident = (incident) => {
   return (dispatch) => {
     return axios.post(`${configUrls.root}redflags/`, incident, config)
       .then((response) => {
+        console.log(response)
         dispatch({ type: 'CREATE_REDFLAG_SUCCESS', response });
       })
       .catch((error) => {
