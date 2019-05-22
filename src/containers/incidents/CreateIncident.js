@@ -79,7 +79,7 @@ class CreateIncident extends Component {
                     </div>
                     <div className="form-group">
                       <label htmlFor="location">Location</label>
-                      <input type="text" id="location" autoComplete="off" onChange={this.handleChange} className="form-control" />
+                      <input type="text" id="location" placeholder="10, 10" autoComplete="off" onChange={this.handleChange} className="form-control" />
                       <div className="invalid-feedback" id="location-text" />
                     </div>
                     <div className="form-group text-center">

@@ -10,7 +10,7 @@ class SignedInLinks extends Component {
     return (
       <ul className="navbar-nav ml-auto mt-2 mt-lg-0" data-test="signedInLink">
         <li className="nav-item">
-          <NavLink className="nav-link" to="/home">
+          <NavLink className="nav-link" to="/">
             Home
           </NavLink>
         </li>
@@ -20,15 +20,9 @@ class SignedInLinks extends Component {
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link" to="/interventions">
-            Interventions
+          <NavLink className="nav-link text-danger" onClick={this.handleLogout} to="/signin">
+            Sign Out
           </NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink className="nav-link" to="/profile">Profile</NavLink>
-        </li>
-        <li className="nav-item">
-          <button id="logout" className="btn btn-link"><i className="fa fa-power-off" aria-hidden="true"></i></button>
         </li>
       </ul>
     );

@@ -69,7 +69,7 @@ export class EditIncident extends Component {
                 <h3 className="text-center">Update Incident</h3>
                 <div className="form-group">
                   <label htmlFor="title">Title</label>
-                  <input type="text" id="title" autoComplete="off" className="form-control" onChange={this.handleChange} value={incident.title} />
+                  <input type="text" id="title" autoComplete="off" disabled className="form-control" onChange={this.handleChange} value={incident.title} />
                   <div className="invalid-feedback" id="title-text" />
                 </div>
                 <div className="form-group">

@@ -62,7 +62,7 @@ class IncidentDetails extends Component {
           <div className="container-fluid text-center">
             <hr />
             <img
-              src="https://res.cloudinary.com/dv85uhrw5/image/upload/v1556052045/pocvovruu6lhhic2fhq1.jpg"
+              src="https://res.cloudinary.com/dv85uhrw5/image/upload/v1558515147/amvpd1uavnluza6p4ue6.jpg"
               alt=""
               className="img-fluid rounded"
             />

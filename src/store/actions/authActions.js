@@ -9,6 +9,7 @@ export const signInUser = (credentials) => {
     return axios.post(`${configUrls.root}login`, credentials)
       .then((response) => {
         dispatch({ type: 'SIGNIN_SUCCESS', response });
+        window.location.replace('/');
       })
       .catch((error) => {
         dispatch({ type: 'SIGNIN_ERROR', error: error.response.data });

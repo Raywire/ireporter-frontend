@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { signInUser } from '../../store/actions/authActions';
+import authStatus from '../../helpers/authStatus';
 
 class SignIn extends Component {
   state = {
@@ -27,9 +28,9 @@ class SignIn extends Component {
       document.getElementById('password').classList.add('is-invalid');
       document.getElementById('message').innerText = authMessage.message;
     }
-    if (authMessage && authMessage.data) {
-      localStorage.setItem('auth', JSON.stringify(authMessage.data[0]));
-      this.props.history.replace('/home');
+
+    if ( authStatus()) {
+      this.props.history.replace('/');
     }
     return (
       <div className="container d-flex align-items-center justify-content-center">
