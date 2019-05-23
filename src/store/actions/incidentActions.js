@@ -1,13 +1,13 @@
 import axios from 'axios';
 import authHeader from '../../helpers/authHeader';
 
+const config = {
+  headers: authHeader(),
+};
+
 const configUrls = {
   root: 'https://pure-wildwood-82378.herokuapp.com/api/v2/',
 };
-
-const config = {
-    headers: authHeader(),
-  };
 
 export const getRedflags = () => {
   return (dispatch) => {

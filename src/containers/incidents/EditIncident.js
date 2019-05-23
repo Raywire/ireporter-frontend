@@ -56,6 +56,9 @@ export class EditIncident extends Component {
 
   render() {
     // Prevent a user who is not logged in from accessing this page
+    if ( authStatus() === false) {
+      this.props.history.replace('/');
+    }
 
     const incident = this.state;
     const incidentData = this.props.incident;

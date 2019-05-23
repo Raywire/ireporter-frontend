@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createIncident } from '../../store/actions/incidentActions';
-import authStatus from '../../helpers/authStatus';
 
 
 class CreateIncident extends Component {

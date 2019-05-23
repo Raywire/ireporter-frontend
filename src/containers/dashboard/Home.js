@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import authStatus from '../../helpers/authStatus';
 
 class Home extends Component {
@@ -24,7 +25,7 @@ class Home extends Component {
         </div>
       )
     }
-    window.location.replace('/signin');
+    return <Redirect to="/signin" />
   }
 }
 

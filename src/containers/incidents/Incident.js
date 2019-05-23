@@ -24,6 +24,9 @@ class IncidentDetails extends Component {
     return null;
   }
   render() {
+    if ( authStatus() === false) {
+      this.props.history.replace('/');
+    }
     const { incident } = this.props;
     if (incident && incident.comment) {
       return (

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import moment from 'moment';
 import { getRedflags } from '../../store/actions/incidentActions';
 import authStatus from '../../helpers/authStatus';
@@ -17,11 +18,11 @@ export class Incidents extends Component {
 
   render() {
     if (authStatus() === false) {
-      window.location.replace('/signin');
+      return <Redirect to="/signin" />
     }
     const { errorMessage } = this.props;
     if (errorMessage && errorMessage.message === 'Token is invalid'){
-      window.location.replace('/signin');
+      localStorage.clear();
     }
     const { incidents } = this.props;
     if (incidents && incidents.length === 0) {
