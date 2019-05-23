@@ -9,12 +9,26 @@ import authStatus from '../../helpers/authStatus';
 const smartTruncate = require('smart-truncate');
 
 export class Incidents extends Component {
+  state = {
+    article: [],
+  }
   componentDidMount() {
     const { type } = this.props;
     if (type === 'redflags'){
       this.props.getRedflags();
     }
   }
+
+componentWillReceiveProps(nextProps){
+  const articleNew = nextProps.incident;
+  const article = this.state.article;
+  if ( article.title !== articleNew.title){
+    this.props.getRedflags();
+    this.setState({
+      article: articleNew,
+    })
+  }
+}
 
   render() {
     if (authStatus() === false) {
@@ -71,6 +85,7 @@ export class Incidents extends Component {
 const mapStateToProps = (state) => {
   return {
     incidents: state.incidents.incidents,
+    incident: state.incidents.createdIncident,
     errorMessage: state.incidents.errorMessage,
   };
 };

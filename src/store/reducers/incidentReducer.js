@@ -1,6 +1,7 @@
 const initState = {
     incidents: [],
     incident: [],
+    createdIncident: [],
     errorMessage: null,
     incidentMessage: null,
   };
@@ -47,7 +48,7 @@ const initState = {
       case 'CREATE_REDFLAG_SUCCESS':
         return {
           ...state,
-          incident: action.response.data.data[0],
+          createdIncident: action.response.data.data[0],
         };
       case 'CREATE_REDFLAG_ERROR':
         return {
