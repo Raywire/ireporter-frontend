@@ -6,6 +6,7 @@ const initState = {
 const authReducer = (state = initState, action) => {
   switch (action.type) {
     case 'SIGNIN_SUCCESS':
+      localStorage.setItem('auth', JSON.stringify(action.response.data.data[0]));
       return {
         ...state,
         authMessage: action.response.data,

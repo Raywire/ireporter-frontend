@@ -3,32 +3,26 @@ import { NavLink } from 'react-router-dom';
 
 class SignedInLinks extends Component {
   handleLogout = () => {
-    localStorage.clear();
+    localStorage.removeItem('auth');
   };
 
   render() {
     return (
       <ul className="navbar-nav ml-auto mt-2 mt-lg-0" data-test="signedInLink">
         <li className="nav-item">
-          <NavLink className="nav-link" to="/home">
+          <NavLink className="nav-link" to="/">
             Home
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link" to="/create">
+          <NavLink className="nav-link" to="/redflags">
             Red Flags
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link" to="/create">
-            Interventions
+          <NavLink className="nav-link text-danger" onClick={this.handleLogout} to="/signin">
+            Sign Out
           </NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink className="nav-link" to="/profile">Profile</NavLink>
-        </li>
-        <li className="nav-item">
-          <button id="logout" class="btn btn-link"><i class="fa fa-power-off" aria-hidden="true"></i></button>
         </li>
       </ul>
     );
