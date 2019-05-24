@@ -10,7 +10,7 @@
     "start": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
     "test": "jest",
-    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
+    "heroku-postbuild": "npm install --only=dev && npm install && npm run build"
   },
   "jest": {
     "moduleNameMapper": {
