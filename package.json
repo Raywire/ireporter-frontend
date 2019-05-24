@@ -4,14 +4,15 @@
   "description": "An app for reporting corruption in the country",
   "main": "index.js",
   "engines": {
+    "npm": "6.7.0",
     "node": "10.15.3"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "npm run build && NODE_ENV=production node server.js",
     "dev-start": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
     "test": "jest",
-    "heroku-postbuild": "npm install --only=dev && npm install && npm run build"
+    "heroku-postbuild": "webpack -p"
   },
   "jest": {
     "moduleNameMapper": {
