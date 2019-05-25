@@ -21,6 +21,26 @@ class Home extends Component {
               </div>
             </Link>
           </div>
+          <div className="col-sm-4">
+            <Link to="/interventions">
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title text-success text-center">Interventions</h5>
+                  <p className="card-text text-center text-success"><i className="fa fa-handshake fa-2x" aria-hidden="true"></i></p>
+                </div>
+              </div>
+            </Link>
+          </div>
+          <div className="col-sm-4">
+            <Link to="/profile">
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title text-info text-center">Profile</h5>
+                  <p className="card-text text-center text-info"><i className="fa fa-user fa-2x" aria-hidden="true"></i></p>
+                </div>
+              </div>
+            </Link>
+          </div>
           </div>
         </div>
       )
