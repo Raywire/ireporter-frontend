@@ -53,7 +53,7 @@ componentWillReceiveProps(nextProps){
     }
     return (
       <div className="redflag-list row" data-test="RedflagList">
-        { incidents && incidents.slice(0, 10).map((incident) => {
+        { incidents && incidents.slice(0, 50).map((incident) => {
           return (
             <div className="col-md-4" key={incident.id}>
             <div className="card mb-4 shadow-sm">

@@ -19,7 +19,7 @@ class IncidentDetails extends Component {
   static getDerivedStateFromProps(nextProps, prevState){
     const { incidentMessage } = nextProps;
     if (incidentMessage && incidentMessage.message) {
-      nextProps.history.replace('/redflags');
+      console.log(nextProps)
     }
     return null;
   }
