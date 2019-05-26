@@ -10,19 +10,24 @@ import Delete from '../../components/Delete';
 
 class IncidentDetails extends Component {
   state = {
-    redirect: false
+    redirect: true
   }
   componentDidMount() {
     const { id } = this.props.match.params;
     this.props.getIncident(id);
   }
-  static getDerivedStateFromProps(nextProps, prevState){
+
+  componentWillReceiveProps(nextProps) {
     const { incidentMessage } = nextProps;
-    if (incidentMessage && incidentMessage.message) {
-      console.log(nextProps)
+    const { redirect } = this.state;
+    if (redirect && incidentMessage && incidentMessage.message) {
+      nextProps.getIncident(nextProps.match.params.id);
+      this.setState({
+        redirect: false,
+      })
     }
-    return null;
   }
+
   render() {
     if ( authStatus() === false) {
       this.props.history.replace('/');
