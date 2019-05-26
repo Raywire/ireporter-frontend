@@ -52,6 +52,7 @@ export class EditIncident extends Component {
       comment: this.state.comment,
     };
     this.props.updateIncidentComment(id, 'redflags', updatedIncident.comment);
+    this.props.history.replace(`/redflags/${id}`);
   }
 
   render() {
